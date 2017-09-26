@@ -30,4 +30,8 @@ class AppHelpers
   def service value
     "#{name}_#{value}_#{env}"
   end
+
+  def node
+    @app_node
+  end
 end
