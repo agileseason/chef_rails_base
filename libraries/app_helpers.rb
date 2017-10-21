@@ -1,6 +1,7 @@
 class AppHelpers
   def initialize app_node
     @app_node = app_node
+    fail 'app node is nil' if @app_node.nil?
   end
 
   def name
