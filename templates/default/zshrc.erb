@@ -1,0 +1,113 @@
+#-------------------------------------------------------------------------------
+# zsh basic configuration
+#-------------------------------------------------------------------------------
+export ZSH=$HOME/.oh-my-zsh
+export ZSH_THEME="<%= @theme %>"
+
+CASE_SENSITIVE="true"
+
+COMPLETION_WAITING_DOTS="true"
+
+plugins=(rails ruby bundler capistrano gem osx npm rbenv ssh-agent rake \
+  command-not-found compleat cp history history-substring-search \
+  git-remote-branch git git-flow git-extras github pow npm yarn)
+
+HISTSIZE=100000
+HISTFILESIZE=200000
+TERM="xterm-256color"
+
+export EDITOR="vim"
+# some shit to enable erlang history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
+source $ZSH/oh-my-zsh.sh
+
+#-------------------------------------------------------------------------------
+# paths
+#-------------------------------------------------------------------------------
+export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+#-------------------------------------------------------------------------------
+# common aliases
+#-------------------------------------------------------------------------------
+
+alias psf='ps aux|grep $1'
+alias ll='ls -l'
+
+#-------------------------------------------------------------------------------
+# app
+#-------------------------------------------------------------------------------
+
+alias site="cd /home/apps/<%=@app_name %>/<%=@app_env %>/current"
+alias rc="site && RAILS_ENV=<%=@app_env %> bundle exec rails console"
+
+#-------------------------------------------------------------------------------
+# search aliases
+#-------------------------------------------------------------------------------
+alias gr=grep_find
+alias f=my_find
+alias fvim=my_find_vim
+alias files='find . -maxdepth 1 -type f | wc -l'
+
+grep_find() {
+  fgrep -ir "$*" .
+}
+my_find() {
+  find . -type f \
+    \( -name "*.rb" -or -name "*.erb" -or -name "*.rss" -or -name "*.xml" -or \
+       -name "*.slim" -or -name "*.haml" -or -name "*.html" -or \
+       -name "*.js" -or -name "*.coffee" -or -name "*.ejs" -or -name "*.jst" \
+       -or -name "*.eco" -or -name "*.css" -or -name "*.scss" \
+       -or -name "*.sass" -or -name "*.yml" -or -name "*.vim" \
+       -or -name "*.rabl" -or -name "*.builder"  -or -name "*.txt" \) \
+    -exec grep -l "$*" {} \;
+}
+my_find_vim() {
+  vim `f "$*"`
+}
+
+#-------------------------------------------------------------------------------
+# zsh-completions
+#-------------------------------------------------------------------------------
+fpath=(path/to/zsh-completions/src $fpath)
+zstyle ':completion:*:processes' command 'ps -ax'
+zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;32'
+zstyle ':completion:*:*:kill:*' menu yes select
+zstyle ':completion:*:kill:*'   force-list always
+
+zstyle ':completion:*:processes-names' command 'ps -e -o comm='
+zstyle ':completion:*:*:killall:*' menu yes select
+zstyle ':completion:*:killall:*'   force-list always
+
+#-------------------------------------------------------------------------------
+# locales configuration
+#-------------------------------------------------------------------------------
+LANG="<%= @locale %>"
+LC_COLLATE="<%= @locale %>"
+LC_CTYPE="<%= @locale %>"
+LC_MESSAGES="<%= @locale %>"
+LC_MONETARY="<%= @locale %>"
+LC_NUMERIC="<%= @locale %>"
+LC_TIME="<%= @locale %>"
+LC_ALL="<%= @locale %>"
+
+#-------------------------------------------------------------------------------
+# PATH for Bundler and NodeJS
+#-------------------------------------------------------------------------------
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
+
+#-------------------------------------------------------------------------------
+# rbenv
+#-------------------------------------------------------------------------------
+# prefer a user rbenv over a system wide install
+if [ -s "${HOME}/.rbenv/bin" ]; then
+  rbenv_root="${HOME}/.rbenv"
+elif [ -s "/usr/local/rbenv" ]; then
+  rbenv_root="/usr/local/rbenv"
+  export RBENV_ROOT="$rbenv_root"
+fi
+
+if [ -n "$rbenv_root" ]; then
+  export PATH="${rbenv_root}/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
