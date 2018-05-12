@@ -12,8 +12,9 @@ include_recipe 'yarn::default'
 
 include_recipe 'memcached::default'
 
+hostname node['app']['hostname'] if node['app']['hostname']
+
 include_recipe 'chef_rails_base::packages'
 include_recipe 'chef_rails_base::user'
 
-hostname node['app']['hostname'] if node['app']['hostname']
 timezone node['timezone']
