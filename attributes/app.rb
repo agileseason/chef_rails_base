@@ -12,6 +12,7 @@ default['app']['user'] = {
 }
 
 default['app']['dirs'] = {
+  'apps' => '/home/apps',
   'app' => nil,
   'env' => nil,
   'root' => nil,
@@ -20,9 +21,7 @@ default['app']['dirs'] = {
   'config' => nil,
   'log' => nil,
   'log_old' => nil,
-  'tmp' => nil,
-  'nginx_cache' => nil,
-  'nginx_keys' => nil
+  'tmp' => nil
 }
 
 default['app']['secrets'] = nil
