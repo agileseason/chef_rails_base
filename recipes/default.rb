@@ -12,10 +12,6 @@ include_recipe 'yarn::default'
 
 if node['chef_rails_base']['memcached']['enabled']
   include_recipe 'memcached::default'
-else
-  memcached_instance 'memcached' do
-    action :remove
-  end
 end
 
 hostname node['app']['hostname'] if node['app']['hostname']
