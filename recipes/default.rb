@@ -6,9 +6,11 @@ end
 include_recipe 'locale'
 include_recipe 'git'
 
-# for sprockets
-include_recipe 'nodejs'
-include_recipe 'yarn::default'
+if node['chef_rails_base']['nodejs']['enabled']
+  # for sprockets
+  include_recipe 'nodejs'
+  include_recipe 'yarn::default'
+end
 
 if node['chef_rails_base']['memcached']['enabled']
   include_recipe 'memcached::default'
