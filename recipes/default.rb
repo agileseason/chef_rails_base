@@ -17,7 +17,7 @@ if node['chef_rails_base']['memcached']['enabled']
   include_recipe 'memcached::default'
 end
 
-# hostname node['app']['hostname'] if node['app']['hostname']
+hostname node['app']['hostname'] if node['app']['hostname']
 
 include_recipe 'chef_rails_base::packages'
 include_recipe 'chef_rails_base::user'
