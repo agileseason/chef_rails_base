@@ -1,9 +1,13 @@
 chef_rails_base CHANGELOG
 =====================
 
+0.2.3
+-----
+- Fix nodejs checksum attr
+
 0.2.2
 -----
-- A better way to specify nginx version: `node['chef_rails_base']['nodejs']['version']`
+- A better way to specify nodejs version: `node['chef_rails_base']['nodejs']['version']`
 
 0.2.0
 -----
