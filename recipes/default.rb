@@ -8,6 +8,9 @@ include_recipe 'locale'
 include_recipe 'git'
 
 if node['chef_rails_base']['nodejs']['enabled']
+  node.override['nodejs']['install_method'] = 'binary'
+  node.override['nodejs']['version'] = node['chef_rails_base']['nodejs']['version']
+
   # for sprockets
   include_recipe 'nodejs'
   include_recipe 'yarn::default'
