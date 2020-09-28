@@ -4,7 +4,10 @@ AppHelpers.new(node['app']).check!
 
 package 'locales-all' if node['platform'] == 'debian'
 
-include_recipe 'locale'
+locale 'set system locale' do
+  lang node['locale']['lang']
+end
+
 include_recipe 'git'
 
 if node['chef_rails_base']['nodejs']['enabled']

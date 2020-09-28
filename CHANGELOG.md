@@ -1,6 +1,10 @@
 chef_rails_base CHANGELOG
 =====================
 
+0.2.4
+-----
+- Remove locale cookbook. Use chef-14 locale resource instead.
+
 0.2.3
 -----
 - Fix nodejs checksum attr
