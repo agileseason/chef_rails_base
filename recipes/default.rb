@@ -10,6 +10,7 @@ include_recipe 'git'
 if node['chef_rails_base']['nodejs']['enabled']
   node.override['nodejs']['install_method'] = 'binary'
   node.override['nodejs']['version'] = node['chef_rails_base']['nodejs']['version']
+  node.override['nodejs']['checksum'] = node['chef_rails_base']['nodejs']['checksum']
 
   # for sprockets
   include_recipe 'nodejs'
