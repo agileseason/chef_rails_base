@@ -1,7 +1,11 @@
 chef_rails_base CHANGELOG
 =====================
 
-0.2.4
+0.2.6
+-----
+- Set memcached listen address to 127.0.0.1 to prevent unwanted connections from internet.
+
+0.2.5
 -----
 - Remove locale cookbook. Use chef-14 locale resource instead.
 
