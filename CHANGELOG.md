@@ -1,6 +1,10 @@
 chef_rails_base CHANGELOG
 =====================
 
+0.3.0
+-----
+- Update for CHEF version > 16
+
 0.2.6
 -----
 - Set memcached listen address to 127.0.0.1 to prevent unwanted connections from internet.

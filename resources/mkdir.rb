@@ -1,4 +1,5 @@
 resource_name :mkdir
+provides :mkdir
 
 property :path, name_property: true
 property :owner, default: node['app']['user']['name']

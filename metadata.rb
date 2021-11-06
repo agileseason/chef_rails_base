@@ -4,7 +4,7 @@ maintainer_email 'takandar@gmail.com'
 license          'MIT'
 description      'Installs/Configures chef_rails_base'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
-version          '0.2.6'
+version          '0.3.0'
 
 depends 'apt'
 depends 'git'
