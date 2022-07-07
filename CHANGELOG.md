@@ -1,6 +1,10 @@
 chef_rails_base CHANGELOG
 =====================
 
+0.3.1
+-----
+- Run `nodejs::nodejs_from_binary`nodejs::nodejs_from_binary` reciope to install node
+
 0.3.0
 -----
 - Update for CHEF version > 16

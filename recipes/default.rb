@@ -16,8 +16,7 @@ if node['chef_rails_base']['nodejs']['enabled']
   node.override['nodejs']['binary']['checksum']['linux_x64'] =
     node['chef_rails_base']['nodejs']['checksum']
 
-  # for sprockets
-  include_recipe 'nodejs'
+  include_recipe 'nodejs::nodejs_from_binary'
   include_recipe 'yarn::default'
 end
 
